@@ -62,7 +62,26 @@ const encode = buffer => {
  */
 const decode = base64 => {
     if (typeof base64 !== 'string') throw '[ decode ] base64参数必须为字符串';
+    const bytes = [];
+    debugger;
+    // [ 97, 98, 99, 100 ]
+    for (let char of [...base64]) {
+        /**
+         * 如果pad出现在中部那么将会直接跳过
+         * 正常情况下pad只会出现在尾部
+         */
+        if (char === '=') continue;
+        const bit6code = MAP_CHAR[char];
+        if (bit6code === undefined) throw `[ decode ] 字符${char}不是合法的base64字符元素`;
+        if (typeof bytes[bytes.length - 1] === 'string') {
 
+            continue;
+        }
+        bytes.push(
+            String(bit6code)
+        );
+    }
+    return new Uint8Array(bytes);
 };
 
 export {
