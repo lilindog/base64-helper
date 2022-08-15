@@ -1,6 +1,6 @@
 import {decode, encode} from '../src/index.mjs';
 
-const str = 'abcd';
+const str = 'abcdefg';
 
 const buffer = new Uint8Array([...str].reduce((result, char) => {
     result.push(char.charCodeAt());
