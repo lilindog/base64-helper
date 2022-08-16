@@ -40,15 +40,11 @@ const encode = buffer => {
             );
             continue;
         }
-        const [j, k, l, m] = [
+        base64Bytes.push(
             a >>> 2,
             (a & 0x03) << 4 | b >>> 4,
             (b & 0x0f) << 2 | c >>> 6,
             c & 0x3f
-        ]
-        // if ([j,k,l,m].includes(MAP_CHAR['+'])) throw index * 3;
-        base64Bytes.push(
-            j,k,l,m
         );
     }
     return base64Bytes.reduce(
