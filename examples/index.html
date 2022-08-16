@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 内联base64测试</title>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <text x="0" y="15" fill="red" transform="rotate(30 20,40)">HELLO LILIN 你好黎林</text>
+    </svg>
+    <hr/>
+    <div
+        style="
+            height: 500px;
+            width: 500px;
+            border: 1px red solid;
+            background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSI+DQogICAgPHRleHQgeD0iMCIgeT0iMTUiIGZpbGw9InJlZCIgdHJhbnNmb3JtPSJyb3RhdGUoMzAgMjAsNDApIj5IRUxMTyBMSUxJTjwvdGV4dD4NCjwvc3ZnPg==);
+        "
+    ></div>
+</body>
+</html>

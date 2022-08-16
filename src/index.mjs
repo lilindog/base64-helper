@@ -19,7 +19,7 @@ const [ MAP_CHAR, MAP_INDEX ] = (() => {
  */
 const encode = buffer => {
     if (!(buffer instanceof Uint8Array)) throw '[ encode ] buffer必须是Uint8Array';
-    const pad = [, '==', '='][buffer.byteLength % 3];
+    const pad = [, '==', '='][buffer.byteLength % 3] ?? '';
     const len =  Math.ceil(buffer.byteLength / 3);
     let index = 0, base64Bytes = [];
     while (index < len) {
@@ -40,11 +40,15 @@ const encode = buffer => {
             );
             continue;
         }
-        base64Bytes.push(
+        const [j, k, l, m] = [
             a >>> 2,
             (a & 0x03) << 4 | b >>> 4,
             (b & 0x0f) << 2 | c >>> 6,
             c & 0x3f
+        ]
+        // if ([j,k,l,m].includes(MAP_CHAR['+'])) throw index * 3;
+        base64Bytes.push(
+            j,k,l,m
         );
     }
     return base64Bytes.reduce(
